@@ -1,3 +1,5 @@
+#problem 1 
+
 import cv2
 import numpy as np
 import glob
@@ -29,8 +31,9 @@ for fname in images:
     img = cv2.imread(fname)
 
     print('Processing image %s...' % fname)
-    resizeImg = cv2.resize(img, (640, 480))
-    gray = cv2.cvtColor(resizeImg, cv2.COLOR_BGR2GRAY)
+    # resizeImg = cv2.resize(img, (640, 480))
+    # gray = cv2.cvtColor(resizeImg, cv2.COLOR_BGR2GRAY)
+    gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
     ret, corners = cv2.findChessboardCorners(gray, checkerboard_size, None)
 
 
@@ -45,7 +48,8 @@ for fname in images:
         imgpoints.append(corners2)
 
 
-        img = cv2.drawChessboardCorners(resizeImg, checkerboard_size, corners2, ret)
+        # img = cv2.drawChessboardCorners(resizeImg, checkerboard_size, corners2, ret)
+        img = cv2.drawChessboardCorners(img, checkerboard_size, corners2, ret)
         cv2.imshow("img", img)
         cv2.waitKey(100)
     else:
@@ -85,7 +89,6 @@ for i in range(len(rvecs)):
     #camera location (with respect to world coordinate system)
     wtc = -np.matrix(R).T * np.matrix(tvecs[i])
     wtc = np.array(wtc).flatten()
-    print(wtc,"\n")
     ax.scatter(wtc[0], wtc[1], -wtc[2], c='b', marker='o')
     ax.text(wtc[0], wtc[1], -wtc[2], f'{i+1}', size=10, zorder=1, color='k')  # Adding labels
 
