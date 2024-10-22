@@ -60,7 +60,7 @@ cv2.destroyAllWindows()
 
 #calibrate camera
 ret, K, dist, rvecs, tvecs = cv2.calibrateCamera(objpoints, imgpoints, gray.shape[::-1], None, None)
-
+print (dist)
 
 print("Intrinsic matrix (K):\n", K)
 print ("r and t ", rvecs[1])
