@@ -62,6 +62,10 @@ cv2.destroyAllWindows()
 ret, K, dist, rvecs, tvecs = cv2.calibrateCamera(objpoints, imgpoints, gray.shape[::-1], None, None)
 print (dist)
 
+
+h, w = img.shape[:2]
+newcameramtx, roi = cv2.getOptimalNewCameraMatrix(K, dist, (w,h), 1, (w,h))
+print("undistortion matrix (newcameramtx):\n", newcameramtx)
 print("Intrinsic matrix (K):\n", K)
 print ("r and t ", rvecs[1])
 print("\nR matrices and t vectors for 3 of the camera views:\n")
