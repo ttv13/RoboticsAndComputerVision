@@ -3,5 +3,5 @@ __pycache__/
 *.pyc
 .ipynb_checkpoints/
 *.pdf
-project_2/
-project_3/
+project_2/CompVisionProj2
+project_3/CompVisionProj3
